@@ -1,5 +1,5 @@
 <script></script>
 <style></style>
-<template>
+<main>
     <p>what!</p>
-</template>
+</main>
