@@ -1,5 +1,5 @@
 <script></script>
 <style></style>
-<template>
+<main>
     <p>Lucy</p>
-</template>
+</main>
