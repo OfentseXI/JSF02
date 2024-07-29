@@ -5,10 +5,10 @@
   import ProductPreview from "./pages/ProductPreview.svelte";
 </script>
 
-<main>
-  
-</main>
+<NavBar />
+<Router>
+    <Route path="/" component={Home} />
+    <Route path="products/:id" component={ProductPreview} />
+</Router>
 
-<style>
- 
-</style>
+<style></style>
