@@ -3,7 +3,7 @@
     import ProductsList from "../components/ProductsList.svelte";
 </script>
 
-<main>
+<main class="bg-[#81ccdd]">
     <div>
         <FilterSort />
     </div>
