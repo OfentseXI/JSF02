@@ -1,6 +1,6 @@
 <script>
 import { onMount } from 'svelte';
-  import LoadingState from '../components/Product/LoadingState.svelte';
+  import LoadingState from '../components/LoadingState.svelte';
   import Error from '../components/Error.svelte';
 
   let product = {};
