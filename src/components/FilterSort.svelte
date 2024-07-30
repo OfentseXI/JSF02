@@ -1,79 +1,44 @@
 <script>
-    function shoppingCart() {
-        return {
-          originalProducts: [], // Store original order of products
-          categories: [],
-          filteredProducts: [],
-          selectedCategory: "",
-          sorting: 'default', // Default sorting
-          selectedProduct: {},
-
-          async init() {
-            await this.fetchCategories();
-            await this.fetchProducts();
-            this.loading = false;
-          },
-
-          async fetchCategories() {
-            try {
-              const response = await fetch("https://fakestoreapi.com/products/categories");
-              this.categories = await response.json();
-            } catch (error) {
-              console.error("Error fetching categories:", error);
-            }
-          },
-
-          async fetchProducts() {
-            try {
-              const response = await fetch("https://fakestoreapi.com/products");
-              this.products = await response.json();
-              this.originalProducts = [...this.products]; // Store original products
-              this.filteredProducts = this.products;
-            } catch (error) {
-              console.error("Error fetching products:", error);
-            }
-          },
-
-          filterProducts() {
-            if (this.selectedCategory) {
-              this.filteredProducts = this.products.filter(product => product.category === this.selectedCategory);
-            } else {
-              this.filteredProducts = this.products;
-            }
-            this.sortProducts();
-          },
-
-          handleSort() {
-            this.sortProducts();
-          },
-
-          sortProducts() {
-            if (this.sorting === "low") {
-              this.filteredProducts.sort((a, b) => a.price - b.price);
-            } else if (this.sorting === "high") {
-              this.filteredProducts.sort((a, b) => b.price - a.price);
-            } else {
-              this.filteredProducts = [...this.originalProducts]; // Reset to original order
-              if (this.selectedCategory) {
-                this.filteredProducts = this.filteredProducts.filter(product => product.category === this.selectedCategory);
-              }
-            }
-          },
-
-          resetFilters() {
-            this.selectedCategory = "";
-            this.sorting = 'default';
-            this.filteredProducts = [...this.originalProducts];
-          },
-
-          toggleNavbar() {
-            this.navbarOpen = !this.navbarOpen;
-          },
-        };
-      }
-</script>
-
-<style></style>
-<main>
-    <p>what!</p>
-</main>
+    import { onMount } from 'svelte';
+    let selectedCategory = '';
+    let sorting = 'default';
+    let categories = [];
+  
+    onMount(() => {
+      // Fetch or initialize categories
+      categories = ['Electronics', 'Books', 'Clothing']; // Example categories
+    });
+  
+    function filterProducts() {
+      // Logic to filter products based on selectedCategory
+      console.log('Filtering products by:', selectedCategory);
+    }
+  
+    function handleSort() {
+      // Logic to sort products based on sorting
+      console.log('Sorting products by:', sorting);
+    }
+  </script>
+  
+  <div class="max-w-screen-xl mx-auto mt-8">
+    <label for="browse" class="w-20 my-auto font-semibold">Browse: </label>
+    <select bind:value={selectedCategory} on:change={filterProducts} class="p-2 w-full text-sm text-gray-900 bg-gray-200 rounded border-s-gray-200 border-s-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+      <option value="">All Categories</option>
+      {#each categories as category}
+        <option value={category}>{category}</option>
+      {/each}
+    </select>
+    <div class="max-w-screen-xl mx-auto mt-8">
+      <label for="sort" class="w-20 my-auto font-semibold">Sort by: </label>
+      <select bind:value={sorting} on:change={handleSort} id="sort" class="p-2 w-full text-sm text-gray-900 bg-gray-200 rounded border-s-gray-200 border-s-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+        <option value="default">Default</option>
+        <option value="low">Price: Low - High</option>
+        <option value="high">Price: High - Low</option>
+      </select>
+    </div>
+  </div>
+  
+  <style>
+    /* Add any required styles here */
+  </style>
+  
