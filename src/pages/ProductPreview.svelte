@@ -9,7 +9,6 @@ import { onMount } from 'svelte';
 
   export let id;
 
-  // Function to fetch product details
   async function getProductDetails(productId) {
     try {
       const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
