@@ -43,7 +43,6 @@ onMount(() => {
                 <h2 class="text-lg line-clamp-2 font-extrabold leading-snug text-slate-600">{product.title}</h2>
               </header>
             </div>
-            <!-- Ratings -->
             <div class="flex items-left -ml-2 mb-2">
               {#each Array(Math.round(product.rating.rate)) as _, index}
                 <svg class="w-4 h-4 text-yellow-300 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">

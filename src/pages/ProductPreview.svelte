@@ -48,7 +48,7 @@ import { onMount } from 'svelte';
 {:else}
 <div class="grid m-10 space-y-5">
   <a href="/">
-      <button class="bg-gray-500 text-white py-2 px-4 rounded">Back</button>
+      <button class="bg-blue-500 text-black py-2 px-4">X</button>
   </a>
   <div class="flex flex-col items-center bg-white border-2 border-gray-500 p-4">
     
